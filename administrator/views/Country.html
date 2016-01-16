@@ -1,0 +1,95 @@
+<h3 class="subti" ng-click="listarCountry()">Cat - {{ item }}</h3>
+<hr>
+<div style="margin:auto 60px;">
+    <div class="panel" >
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glypicon-search"></i>Buscar</span>
+                <input type="text" ng-model="busca.description" class="form-control" placeholder="Buscar Country" autofocus>
+                <span class="input-group-addon">
+                    <button class="btn btn-xs" style="background: rgba(238,238,238,0.5);border: 0px;"  data-toggle="modal" data-target="#newCountry"> New Country 
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th width="80%">
+                      <a href="" ng-click="ordenarPor('description')">
+                        Country
+                      </a>
+                      <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-description')"></span>
+                    </th>	
+                    <th>Edit</th>	
+                    <th>Delete</th>	
+                </tr>
+                <tr ng-repeat="country in countrys  | orderBy:ordenSeleccionado | filter: busca ">
+                    <td>{{country.description  | uppercase}}</td>
+
+                    <td><a href="" ng-click="obtenerDatos(country.idcountry)" data-toggle="modal" data-target="#editCountry"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+                    <td><a href="" ng-click="eliminarCountry(country.idcountry)"><span class="glyphicon glyphicon-minus"></span></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="newCountry" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">NEW COUNTRY</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="country"><span class="glyphicon glyphicon-plus"></span> New Country</label>
+              <input type="text" class="form-control" id="country" placeholder="Country" ng-model="country">
+            </div>
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+            <button type="submit" class="btn btn-success pull-left" data-dismiss="modal" ng-click="RegistrarCountry();"><span class="glyphicon glyphicon-ok"></span> Save</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Modal editCountry-->
+  <div class="modal fade" id="editCountry" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">EDIT COUNTRY</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="country"><span class="glyphicon glyphicon-plus"  ></span> Edit Country</label>
+              <input type="hidden" ng-model="codigoCountry">
+              <input type="text" class="form-control" ng-model="countryEdit"  required focus>
+            </div>
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+            <button type="submit" class="btn btn-success pull-left" ng-click="editarCountry()" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>

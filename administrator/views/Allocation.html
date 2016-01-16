@@ -1,0 +1,56 @@
+<h3>Cat - {{ item }}</h3>
+<hr>
+<div style="margin:auto 60px;">
+    <div class="panel" >
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glypicon-search"></i>Buscar</span>
+                <input type="text" ng-model="busca.name" class="form-control" placeholder="Buscar Allocation" autofocus>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>
+                      <a href="" ng-click="ordenarPor('name')">
+                        Name
+                      </a>
+                      <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-name')"></span>
+                    </th>
+                    <th>Estate</th>
+                    <th>Asignar</th>
+                </tr>
+                <tr ng-repeat="person in persons | orderBy:ordenSeleccionado | filter: busca">
+                    <td>{{person.name  | uppercase}}</td>
+                    <td> <img class="imgAI" src="img/activo.png"> </td>
+                    <td> <a href="" ng-click="listadoOk(person.idperson,person.name)"> <img src="img/video.png" class="imgAI"></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-left: 22px; margin-bottom: -13px"><strong>{{nombrePersona | uppercase}}</strong></div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>History Clinic</th>
+                    <th>Link</th>
+                    <th>Video State</th>
+                    <th>Completed</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="allocation in allocations">
+                    <td>{{allocation.clinichistory  | uppercase}}</td>
+                    <td>{{allocation.link  | uppercase}}</td>
+                    <td>{{allocation.State  | uppercase}}</td>
+                    <td>{{allocation.Completed  | uppercase}}</td>
+                    <td><a href="" ng-click="agregarVideo(allocation.idperson)"><img class="imgAS" src="img/noactivo.png"></td></a>
+                    
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

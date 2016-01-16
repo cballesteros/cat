@@ -1,0 +1,94 @@
+<h3 class="subti" ng-click="listarEspeciality()">Cat - {{ item }}</h3>
+<hr>
+<div style="margin:auto 60px;">
+    <div class="panel" >
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glypicon-search"></i>Buscar</span>
+                <input type="text" ng-model="busca.description" class="form-control" placeholder="Buscar Especiality" autofocus>
+                <span class="input-group-addon">
+                    <button class="btn btn-xs" style="background: rgba(238,238,238,0.5);border: 0px;" data-toggle="modal" data-target="#newEspeciality"> New Especiality 
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th width="80%">
+                       <a href="" ng-click="ordenarPor('description')">
+                        Especiality
+                      </a>
+                      <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-description')"></span>
+                    </th>
+                    <th>Edit</th>	
+                    <th>Delete</th>	
+                </tr>
+                <tr ng-repeat="especiality in especialitys  | orderBy:ordenSeleccionado | filter: busca ">
+                    <td>{{especiality.description  | uppercase}}</td>
+
+                    <td><a href="" ng-click="obtenerDatos(especiality.idespeciality)" data-toggle="modal" data-target="#editEspeciality"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+                    <td><a href="" ng-click="eliminarEspeciality(especiality.idespeciality)"><span class="glyphicon glyphicon-minus"></span></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="newEspeciality" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">NEW ESPECIALITY</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="brand"><span class="glyphicon glyphicon-plus"></span> New Especiality</label>
+              <input type="text" class="form-control" id="brand" placeholder="Especiality" ng-model="especiality">
+            </div>
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+            <button type="submit" class="btn btn-success pull-left" ng-click="RegistrarEspeciality()" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Save</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Modal editEspeciality-->
+  <div class="modal fade" id="editEspeciality" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">EDIT ESPECIALITY</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="especiality"><span class="glyphicon glyphicon-plus"  ></span> Edit Especiality</label>
+              <input type="hidden" ng-model="codigoEspeciality">
+              <input type="text" class="form-control" ng-model="especialityEdit"  required focus>
+            </div>
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+            <button type="submit" class="btn btn-success pull-left" ng-click="editarEspeciality()" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>

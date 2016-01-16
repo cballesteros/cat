@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="img/cat.png" />
+
+    <title>::.Cat</title>
+     <link href="css/stylesMenu.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  
+  <body ng-app="videoApp" class="fondo">
+
+    <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 caja">
+            <img src="img/logo.jpg" class="img">
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 caja">
+            <h3>CAT ADMINISTRATION</h3>
+          </div>
+        </div>
+        
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 caja">
+            
+            <div id='cssmenu'>
+              <ul>
+                 <li><a href='#'><span>Star</span></a></li>
+                 <li class='has-sub'><a href='#'><span>Basics</span></a>
+                    <ul>
+                       <li><a href='#/brand/'><span>Brand</span></a></li>
+                       <li><a href='#/model/'><span>Model</span></a></li>
+                       <li><a href='#/country/'><span>Country</span></a></li>
+                       <li><a href='#/hospital/'><span>Hospital</span></a></li>
+                       <li><a href='#/especiality/'><span>Especiality</span></a></li>
+                       <li><a href='#/experience/'><span>Experience</span></a></li>
+                       <li><a href='#/diagnosisVideo/'><span>Diagnosis Video</span></a></li>
+                       <li><a href='#/stateVideo/'><span>State Video</span></a></li>
+                    </ul>
+                 </li>
+                 <li class="has-sub"><a href='#'><span>Advanced</span></a>
+                   <ul>
+                       <li><a href='#/person/'><span>Person</span></a></li>
+                       <li><a href='#/video/'><span>Video</span></a></li>
+                       <li><a href='#/allocation/'><span>Allocation</span></a></li>
+                    </ul>
+                 </li>
+                </ul>
+              </div>
+  
+          </div>
+
+          <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <div ng-view>
+                
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+
+    <script src="css/bootstrap.min.css"></script>
+    <script src="componentes/jquery-1.11.1.js"></script>
+    <script src="componentes/bootstrap.min.js"></script>
+    <script src="componentes/angular.min.js"></script>
+    <script src="componentes/angular-route.min.js"></script>
+
+    <script src="script/app.js"></script>
+    <script src="script/scriptMenu.js"></script>
+    <script src="script/controller/allocationCtrl.js"></script>
+    <script src="script/controller/brandCtrl.js"></script>
+    <script src="script/controller/countryCtrl.js"></script>
+    <script src="script/controller/diagnosisVideoCtrl.js"></script>
+    <script src="script/controller/especialityCtrl.js"></script>
+    <script src="script/controller/experienceCtrl.js"></script>
+    <script src="script/controller/hospitalCtrl.js"></script>
+    <script src="script/controller/modelCtrl.js"></script>
+    <script src="script/controller/personCtrl.js"></script>
+    <script src="script/controller/reportsCtrl.js"></script>
+    <script src="script/controller/starCtrl.js"></script>
+    <script src="script/controller/stateVideoCtrl.js"></script>
+    <script src="script/controller/videoCtrl.js"></script>
+  </body>
+</html>
+

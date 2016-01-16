@@ -1,0 +1,245 @@
+<h3 class="subti" ng-click="listarPerson()">Cat - {{ item }}</h3>
+<hr>
+<div style="margin:auto 60px;">
+    <div class="panel" >
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glypicon-search"></i>Buscar</span>
+                <input type="text" ng-model="busca.name" class="form-control" placeholder="Buscar Person" autofocus>
+                <span class="input-group-addon">
+                    <button class="btn btn-xs" style="background: rgba(238,238,238,0.5);border: 0px;" data-toggle="modal" data-target="#newPerson"> New Person
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>
+                      <a href="" ng-click="ordenarPor('name')">
+                        Person
+                      </a>
+                      <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-name')"></span>
+                    </th>
+                    <th>E-mail</th>
+                    <th>Phone</th>
+                    <th>Expeciality</th>
+                    <th>Hospital</th>
+                    <th>Edit</th>	
+                    <th>Delete</th>	
+                </tr>
+                <tr ng-repeat="person in persons  | orderBy:ordenSeleccionado | filter: busca ">
+                    <td>{{person.name  | uppercase}}</td>
+                    <td>{{person.email  | uppercase}}</td>
+                    <td>{{person.phone  | uppercase}}</td>
+                    <td>{{person.experience  | uppercase}}</td>
+                    <td>{{person.hospital  | uppercase}}</td>
+
+                    <td><a href="" ng-click="obtenerDatos(person.idperson)" data-toggle="modal" data-target="#editPerson"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+                    <td><a href="" ng-click="eliminarPerson(person.idperson)"><span class="glyphicon glyphicon-minus"></span></a></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal -->
+  <div class="modal fade" id="newPerson" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">NEW PERSON</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+          <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Name:</div>
+                    <input type="text" id="name" class="form-control" ng-model="nombre"  required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">E-Mail:</div>
+                    <input type="text" id="email" class="form-control" ng-model="email"  required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Phone:</div>
+                    <input type="text" id="phone" class="form-control" ng-model="phone"  required>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="especiality"><span class="glyphicon glyphicon-plus"></span> Choose a Speciality</label>
+              <select class="form-control" ng-model="especiality">
+                  <option ng-repeat="especiality in especialitys" value="{{especiality.idespeciality}}" >{{especiality.description  | uppercase}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="experience"><span class="glyphicon glyphicon-plus"></span> Choose a Experience</label>
+              <select class="form-control" ng-model="experience">
+                  <option ng-repeat="experience in experiences" value="{{experience.idexperience}}">{{experience.descripcion  | uppercase}}</option>
+              </select>
+            </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Usuario:</div>
+                    <input type="text" id="user" class="form-control" ng-model="user"  required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Password:</div>
+                    <input type="password" id="pass" class="form-control" ng-model="pass"  required>
+                </div>
+              </div>
+              <div class="form-group">
+              <label for="hospital"><span class="glyphicon glyphicon-plus"></span> Choose a Hospital</label>
+              <select class="form-control" ng-model="hospital">
+                  <option ng-repeat="hospital in hospitals" value="{{hospital.idhospital}}">{{hospital.description  | uppercase}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="country"><span class="glyphicon glyphicon-plus"></span> Choose a Country</label>
+              <select class="form-control" ng-model="country">
+                  <option ng-repeat="country in countrys" value="{{country.idcountry}}">{{country.description  | uppercase}}</td>
+                  </option>
+              </select>
+            </div>
+            <div class="has-success">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="checked1"  value="active" ng-model="state">
+                  Active
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Date:</div>
+                    <input type="date" class="form-control" ng-model="fecha" ng-selected="12/12/2013"  required>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+            <button type="submit" class="btn btn-success pull-left" ng-click="registrarPerson();" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Save</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+ <!-- Modal editPerson-->
+  <div class="modal fade" id="editPerson" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">EDIT PERSON</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+          <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="hidden" ng-model="codigoPerson">
+                    <div class="input-group-addon">Name:</div>
+                    <input type="text" id="name" class="form-control" ng-model="nombreEdit"  required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">E-Mail:</div>
+                    <input type="text" id="email" class="form-control" ng-model="emailEdit"  required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Phone:</div>
+                    <input type="text" id="phone" class="form-control" ng-model="phoneEdit"  required>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="especiality"><span class="glyphicon glyphicon-plus"></span> Choose a Speciality</label>
+              <select class="form-control" ng-model="especialityEdit">
+                  <option ng-repeat="especiality in especialitys" value="{{especiality.idespeciality}}" >{{especiality.description  | uppercase}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="experience"><span class="glyphicon glyphicon-plus"></span> Choose a Experience</label>
+              <select class="form-control" ng-model="experienceEdit">
+                  <option ng-repeat="experience in experiences" value="{{experience.idexperience}}">{{experience.descripcion  | uppercase}}</option>
+              </select>
+            </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Usuario:</div>
+                    <input type="text" id="user" class="form-control" ng-model="userEdit"  required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Password:</div>
+                    <input type="password" id="pass" class="form-control" ng-model="passEdit"  required>
+                </div>
+              </div>
+              <div class="form-group">
+              <label for="hospital"><span class="glyphicon glyphicon-plus"></span> Choose a Hospital</label>
+              <select class="form-control" ng-model="hospitalEdit">
+                  <option ng-repeat="hospital in hospitals" value="{{hospital.idhospital}}">{{hospital.description  | uppercase}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="country"><span class="glyphicon glyphicon-plus"></span> Choose a Country</label>
+              <select class="form-control" ng-model="countryEdit">
+                  <option ng-repeat="country in countrys" value="{{country.idcountry}}">{{country.description  | uppercase}}</td>
+                  </option>
+              </select>
+            </div>
+            <div class="has-success">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="checked1"  value="active" ng-model="stateEdit">
+                  Active
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Date:</div>
+                    <input type="date" class="form-control" ng-model="fechaEdit" ng-selected="12/12/2013"  required>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+            <button type="submit" class="btn btn-success pull-left" ng-click="EditPerson();" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>

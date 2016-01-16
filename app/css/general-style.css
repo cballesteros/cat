@@ -1,0 +1,155 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/09/2014, 07:17:33 PM
+    Author     : cristian
+*/
+#content{
+    width: 100%;
+}
+
+#controls{
+    width: 90%;
+}
+
+#editor_div{
+    width: 70%;
+    margin: 0 auto;
+}
+
+#frames_div{
+    width: 100%;
+    overflow: hidden;
+    position:relative;
+    top:auto;
+}
+
+.col-xs-1{
+    padding-right:1px;
+    padding-left:1px;
+    text-align: center;
+    font-size: 90%;
+}
+
+.labelTime{
+    height: 5px;
+    padding: 2px;
+    margin-bottom: 2px;
+}
+
+#controls{
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: black;
+    text-align: center;
+}
+
+#times1{
+    border-radius: 50px;
+    background-color: #FFF;
+}
+
+#times2{
+    border-radius: 50px;
+    background-color: #FFF;
+}
+
+#icon-pause{
+    display: none;
+}
+
+#icon-pause-backward{
+    display: none;
+}
+
+#icon-pause-forward{
+    display: none;
+}
+
+#message{
+    margin-top: 5px;
+}
+
+.progress{
+    background-color: #999999;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,1);
+}
+
+.progress-bar{
+    background-color: #2F2F2F;
+}
+
+.navbar{
+    min-height: 30px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+#spanTime {
+    background-color: #000;
+}
+
+#diamondBlue,#diamondRed{
+    visibility: hidden;
+}
+
+.polypAnnotation{
+    color: rgb(218, 165, 32);
+}
+
+.cancerAnnotation{
+    color: rgb(218, 165, 32);
+}
+
+.discardAnnotation{
+    color: rgb(218, 165, 32);
+}
+/*
+#nav-bar-top-left{
+    background-color: #222;
+    padding-bottom: 0.5%;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#nav-bar-top-left a{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+*/
+#nav-bar-top-left span{
+    color: #999999;
+}
+
+#nav-bar-top-left:hover span{
+    color: black;
+}
+
+#message{
+    text-align: center;
+    font-weight: bold;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+  
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
+}
